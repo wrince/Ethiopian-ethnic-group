@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+select, input, button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.dictionary {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+p {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
