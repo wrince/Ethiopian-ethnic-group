@@ -1,3 +1,4 @@
+// Ethnic Groups List
 const ethnicGroups = {
     "Amhara": "https://en.wikipedia.org/wiki/Amhara_people",
     "Oromo": "https://en.wikipedia.org/wiki/Oromo_people",
@@ -12,7 +13,7 @@ const ethnicGroups = {
     "Harari": "https://en.wikipedia.org/wiki/Harari_people"
 };
 
-// Populate dropdown
+// Populate Ethnic Group Dropdown
 window.onload = function() {
     const select = document.getElementById("ethnicSelect");
     Object.keys(ethnicGroups).forEach(group => {
@@ -23,7 +24,7 @@ window.onload = function() {
     });
 };
 
-// Open ethnic group Wikipedia page
+// Open Ethnic Group Wikipedia Page
 function openEthnicGroupWebsite() {
     const selectedGroup = document.getElementById("ethnicSelect").value;
     if (selectedGroup && ethnicGroups[selectedGroup]) {
@@ -31,7 +32,7 @@ function openEthnicGroupWebsite() {
     }
 }
 
-// Fetch dictionary definition from Wikipedia
+// Dictionary Function (Uses Google, Wikipedia, DictionaryAPI.dev)
 async function searchDictionary() {
     let word = document.getElementById("searchWord").value.trim();
     let resultElement = document.getElementById("dictionaryResult");
@@ -41,23 +42,44 @@ async function searchDictionary() {
         return;
     }
 
-    const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(word)}`;
+    // 1. Google Search (Oxford Dictionary)
+    let googleSearchUrl = `https://www.google.com/search?q=define+${encodeURIComponent(word)}`;
+    resultElement.innerHTML = `Click <a href="${googleSearchUrl}" target="_blank">here</a> for the definition on Google.`;
 
+    // 2. Wikipedia
+    const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(word)}`;
     try {
         let response = await fetch(wikiUrl);
         let data = await response.json();
 
-        if (data.type === "disambiguation" || !data.extract) {
-            resultElement.textContent = "No clear definition found. Try another word.";
-        } else {
-            resultElement.textContent = data.extract;
+        if (data.extract) {
+            resultElement.innerHTML += `<br><strong>Wikipedia:</strong> ${data.extract}`;
+            return;
         }
     } catch (error) {
-        resultElement.textContent = "Error fetching definition. Try again.";
+        console.warn("Wikipedia fetch failed:", error);
     }
+
+    // 3. DictionaryAPI.dev (No API Key Required)
+    const dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`;
+    try {
+        let response = await fetch(dictionaryUrl);
+        let data = await response.json();
+
+        if (response.ok && data.length > 0) {
+            let meaning = data[0].meanings[0].definitions[0].definition;
+            resultElement.innerHTML += `<br><strong>Dictionary API:</strong> ${meaning}`;
+            return;
+        }
+    } catch (error) {
+        console.warn("DictionaryAPI.dev fetch failed:", error);
+    }
+
+    // If all fail
+    resultElement.innerHTML += "<br>No definition found. Try another word.";
 }
 
-// Change background from file input
+// Change Background from File Input
 function changeBackgroundFromFile() {
     const fileInput = document.getElementById('backgroundInput');
     const file = fileInput.files[0];
@@ -70,7 +92,7 @@ function changeBackgroundFromFile() {
     }
 }
 
-// Set a default background image
+// Set a Default Background
 function setDefaultBackground() {
     document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
-}
+        }
