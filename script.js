@@ -1,4 +1,3 @@
-
 const ethnicGroups = {
     "Amhara": "https://en.wikipedia.org/wiki/Amhara_people",
     "Oromo": "https://en.wikipedia.org/wiki/Oromo_people",
@@ -16,7 +15,7 @@ const ethnicGroups = {
     "Kefficho": "https://en.wikipedia.org/wiki/Kefficho_people",
     "Gedeo": "https://en.wikipedia.org/wiki/Gedeo_people",
     "Argobba": "https://en.wikipedia.org/wiki/Argobba_people",
-    "Silt'e": "https://en.wikipedia.org/wiki/Silt%E2%80%99e_people",
+    "Silt’e": "https://en.wikipedia.org/wiki/Silt%E2%80%99e_people",
     "Borana": "https://en.wikipedia.org/wiki/Borana_people",
     "Guji": "https://en.wikipedia.org/wiki/Guji_people",
     "Burji": "https://en.wikipedia.org/wiki/Burji_people",
@@ -106,4 +105,4 @@ function changeBackgroundFromFile() {
 // Set a default background image
 function setDefaultBackground() {
     document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
-}
+        }
