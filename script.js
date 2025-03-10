@@ -105,4 +105,4 @@ function changeBackgroundFromFile() {
 // Set a default background image
 function setDefaultBackground() {
     document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
-        }
+}
