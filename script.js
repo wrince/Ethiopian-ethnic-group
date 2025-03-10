@@ -14,7 +14,6 @@ const ethnicGroups = {
     "Kambaata": "https://en.wikipedia.org/wiki/Kambaata_people",
     "Kefficho": "https://en.wikipedia.org/wiki/Kefficho_people",
     "Gedeo": "https://en.wikipedia.org/wiki/Gedeo_people",
-    "Wolayta": "https://en.wikipedia.org/wiki/Wolayta_people",
     "Argobba": "https://en.wikipedia.org/wiki/Argobba_people",
     "Silt'e": "https://en.wikipedia.org/wiki/Silt%E2%80%99e_people",
     "Borana": "https://en.wikipedia.org/wiki/Borana_people",
@@ -37,7 +36,6 @@ const ethnicGroups = {
     "Konta": "https://en.wikipedia.org/wiki/Konta_people",
     "Bench": "https://en.wikipedia.org/wiki/Bench_people",
     "Walayta": "https://en.wikipedia.org/wiki/Walayta_people",
-    "Tigray": "https://en.wikipedia.org/wiki/Tigrayans",
     "Adere": "https://en.wikipedia.org/wiki/Adere_people",
     "Afroasiatic": "https://en.wikipedia.org/wiki/Afroasiatic_peoples",
     "Saho": "https://en.wikipedia.org/wiki/Saho_people",
@@ -47,21 +45,14 @@ const ethnicGroups = {
     "Zayse": "https://en.wikipedia.org/wiki/Zayse_people",
     "Bafanji": "https://en.wikipedia.org/wiki/Bafanji_people",
     "Bodi": "https://en.wikipedia.org/wiki/Bodi_people",
-    "Hadiya": "https://en.wikipedia.org/wiki/Hadiya_people",
-    "Gurage": "https://en.wikipedia.org/wiki/Gurage_people",
-    "Gamo": "https://en.wikipedia.org/wiki/Gamo_people",
     "Cheha": "https://en.wikipedia.org/wiki/Cheha_people",
     "Dizi": "https://en.wikipedia.org/wiki/Dizi_people",
-    "Wolayta": "https://en.wikipedia.org/wiki/Wolayta_people",
-    "Suri": "https://en.wikipedia.org/wiki/Suri_people",
     "Bena": "https://en.wikipedia.org/wiki/Bena_people",
-    "Afar": "https://en.wikipedia.org/wiki/Afar_people",
     "Chepen": "https://en.wikipedia.org/wiki/Chepen_people",
     "Mareko": "https://en.wikipedia.org/wiki/Mareko_people",
     "Kachama": "https://en.wikipedia.org/wiki/Kachama_people",
     "Gochama": "https://en.wikipedia.org/wiki/Gochama_people",
-    "Odo": "https://en.wikipedia.org/wiki/Odo_people",
-    "Beni": "https://en.wikipedia.org/wiki/Beni_people"
+    "Odo": "https://en.wikipedia.org/wiki/Odo_people"
 };
 
 // Populate dropdown on window load
@@ -83,30 +74,19 @@ function openEthnicGroupWebsite() {
     }
 }
 
-// Fetch dictionary definition from Wikipedia
+// Redirect to a new page showing the dictionary definition
 async function searchDictionary() {
     let word = document.getElementById("searchWord").value.trim();
-    let resultElement = document.getElementById("dictionaryResult");
 
     if (!word) {
-        resultElement.textContent = "Please enter a word.";
+        alert("Please enter a word.");
         return;
     }
 
-    const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(word)}`;
+    const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(word)}`;
 
-    try {
-        let response = await fetch(wikiUrl);
-        let data = await response.json();
-
-        if (data.type === "disambiguation" || !data.extract) {
-            resultElement.textContent = "No clear definition found. Try another word.";
-        } else {
-            resultElement.textContent = data.extract;
-        }
-    } catch (error) {
-        resultElement.textContent = "Error fetching definition. Try again.";
-    }
+    // Redirect to the Wikipedia page for the word
+    window.location.href = wikiUrl;
 }
 
 // Change background from file input
@@ -125,4 +105,4 @@ function changeBackgroundFromFile() {
 // Set a default background image
 function setDefaultBackground() {
     document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
-            }
+        }
