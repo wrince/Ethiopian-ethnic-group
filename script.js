@@ -1,3 +1,4 @@
+
 const ethnicGroups = {
     "Amhara": "https://en.wikipedia.org/wiki/Amhara_people",
     "Oromo": "https://en.wikipedia.org/wiki/Oromo_people",
@@ -74,8 +75,8 @@ function openEthnicGroupWebsite() {
     }
 }
 
-// Redirect to a new page showing the dictionary definition
-async function searchDictionary() {
+// Redirect to Google search for the dictionary word
+function searchDictionary() {
     let word = document.getElementById("searchWord").value.trim();
 
     if (!word) {
@@ -83,10 +84,10 @@ async function searchDictionary() {
         return;
     }
 
-    const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(word)}`;
+    const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(word)}`;
 
-    // Redirect to the Wikipedia page for the word
-    window.location.href = wikiUrl;
+    // Redirect to Google search for the word
+    window.location.href = googleSearchUrl;
 }
 
 // Change background from file input
@@ -105,4 +106,35 @@ function changeBackgroundFromFile() {
 // Set a default background image
 function setDefaultBackground() {
     document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
-        }
+}
+
+Updated index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopian Ethnic Groups & Dictionary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ethiopian Ethnic Groups</h1>
+        <select id="ethnicSelect" onchange="openEthnicGroupWebsite()">
+            <option value="">Select an ethnic group</option>
+        </select>
+        <!-- Background Selection -->
+        <input type="file" id="backgroundInput" accept="image/*" onchange="changeBackgroundFromFile()" />
+        <button onclick="setDefaultBackground()">Set Default Background</button>
+    </div>
+
+    <div class="dictionary">
+        <h2>Dictionary</h2>
+        <input type="text" id="searchWord" placeholder="Enter a word">
+        <button onclick="searchDictionary()">Search</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
