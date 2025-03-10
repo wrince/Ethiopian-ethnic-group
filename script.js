@@ -107,34 +107,3 @@ function changeBackgroundFromFile() {
 function setDefaultBackground() {
     document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
 }
-
-Updated index.html:
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethiopian Ethnic Groups & Dictionary</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Ethiopian Ethnic Groups</h1>
-        <select id="ethnicSelect" onchange="openEthnicGroupWebsite()">
-            <option value="">Select an ethnic group</option>
-        </select>
-        <!-- Background Selection -->
-        <input type="file" id="backgroundInput" accept="image/*" onchange="changeBackgroundFromFile()" />
-        <button onclick="setDefaultBackground()">Set Default Background</button>
-    </div>
-
-    <div class="dictionary">
-        <h2>Dictionary</h2>
-        <input type="text" id="searchWord" placeholder="Enter a word">
-        <button onclick="searchDictionary()">Search</button>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
