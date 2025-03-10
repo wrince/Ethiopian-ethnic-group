@@ -1,5 +1,4 @@
-// Ethnic Groups List
-const ethnicGroups = {
+        const ethnicGroups = {
     "Amhara": "https://en.wikipedia.org/wiki/Amhara_people",
     "Oromo": "https://en.wikipedia.org/wiki/Oromo_people",
     "Tigray": "https://en.wikipedia.org/wiki/Tigrayans",
@@ -10,10 +9,65 @@ const ethnicGroups = {
     "Wolayta": "https://en.wikipedia.org/wiki/Wolayta_people",
     "Hadiya": "https://en.wikipedia.org/wiki/Hadiya_people",
     "Gamo": "https://en.wikipedia.org/wiki/Gamo_people",
-    "Harari": "https://en.wikipedia.org/wiki/Harari_people"
+    "Harari": "https://en.wikipedia.org/wiki/Harari_people",
+    "Kambaata": "https://en.wikipedia.org/wiki/Kambaata_people",
+    "Agew": "https://en.wikipedia.org/wiki/Agew_people",
+    "Benishangul": "https://en.wikipedia.org/wiki/Benishangul_people",
+    "Silt'e": "https://en.wikipedia.org/wiki/Silt%27e_people",
+    "Karo": "https://en.wikipedia.org/wiki/Karo_people",
+    "Nuer": "https://en.wikipedia.org/wiki/Nuer_people",
+    "Shanqella": "https://en.wikipedia.org/wiki/Shanqella_people",
+    "Berta": "https://en.wikipedia.org/wiki/Berta_people",
+    "Anuak": "https://en.wikipedia.org/wiki/Anuak_people",
+    "Dizi": "https://en.wikipedia.org/wiki/Dizi_people",
+    "Suri": "https://en.wikipedia.org/wiki/Suri_people",
+    "Mursi": "https://en.wikipedia.org/wiki/Mursi_people",
+    "Bodi": "https://en.wikipedia.org/wiki/Bodi_people",
+    "Kwegu": "https://en.wikipedia.org/wiki/Kwegu_people",
+    "Nyangatom": "https://en.wikipedia.org/wiki/Nyangatom_people",
+    "Konkombu": "https://en.wikipedia.org/wiki/Konkombu_people",
+    "Maale": "https://en.wikipedia.org/wiki/Maale_people",
+    "Tsemay": "https://en.wikipedia.org/wiki/Tsemay_people",
+    "Omo": "https://en.wikipedia.org/wiki/Omo_people",
+    "Ethiopian Jews": "https://en.wikipedia.org/wiki/Ethiopian_Jews",
+    "Gedeo": "https://en.wikipedia.org/wiki/Gedeo_people",
+    "Arsi": "https://en.wikipedia.org/wiki/Arsi_people",
+    "Borana": "https://en.wikipedia.org/wiki/Borana_people",
+    "Fuga": "https://en.wikipedia.org/wiki/Fuga_people",
+    "Jebena": "https://en.wikipedia.org/wiki/Jebena_people",
+    "Macho": "https://en.wikipedia.org/wiki/Macho_people",
+    "Dawro": "https://en.wikipedia.org/wiki/Dawro_people",
+    "Kambata": "https://en.wikipedia.org/wiki/Kambata_people",
+    "Hamar": "https://en.wikipedia.org/wiki/Hamar_people",
+    "Bale": "https://en.wikipedia.org/wiki/Bale_people",
+    "Wolayta": "https://en.wikipedia.org/wiki/Wolayta_people",
+    "Afar": "https://en.wikipedia.org/wiki/Afar_people",
+    "Gurage": "https://en.wikipedia.org/wiki/Gurage_people",
+    "Mursi": "https://en.wikipedia.org/wiki/Mursi_people",
+    "Somali": "https://en.wikipedia.org/wiki/Somali_people",
+    "Sidama": "https://en.wikipedia.org/wiki/Sidama_people",
+    "Tigray": "https://en.wikipedia.org/wiki/Tigrayans",
+    "Agew": "https://en.wikipedia.org/wiki/Agew_people",
+    "Konkombu": "https://en.wikipedia.org/wiki/Konkombu_people",
+    "Oromo": "https://en.wikipedia.org/wiki/Oromo_people",
+    "Berta": "https://en.wikipedia.org/wiki/Berta_people",
+    "Dizi": "https://en.wikipedia.org/wiki/Dizi_people",
+    "Silt’e": "https://en.wikipedia.org/wiki/Silt%27e_people",
+    "Karo": "https://en.wikipedia.org/wiki/Karo_people",
+    "Gamo": "https://en.wikipedia.org/wiki/Gamo_people",
+    "Harari": "https://en.wikipedia.org/wiki/Harari_people",
+    "Kambata": "https://en.wikipedia.org/wiki/Kambata_people",
+    "Dawro": "https://en.wikipedia.org/wiki/Dawro_people",
+    "Fuga": "https://en.wikipedia.org/wiki/Fuga_people",
+    "Suri": "https://en.wikipedia.org/wiki/Suri_people",
+    "Nuer": "https://en.wikipedia.org/wiki/Nuer_people",
+    "Tsemay": "https://en.wikipedia.org/wiki/Tsemay_people",
+    "Maale": "https://en.wikipedia.org/wiki/Maale_people",
+    "Shanqella": "https://en.wikipedia.org/wiki/Shanqella_people",
+    "Gedeo": "https://en.wikipedia.org/wiki/Gedeo_people"
 };
 
-// Populate Ethnic Group Dropdown
+// Populate dropdown
 window.onload = function() {
     const select = document.getElementById("ethnicSelect");
     Object.keys(ethnicGroups).forEach(group => {
@@ -24,7 +78,7 @@ window.onload = function() {
     });
 };
 
-// Open Ethnic Group Wikipedia Page
+// Open ethnic group Wikipedia page
 function openEthnicGroupWebsite() {
     const selectedGroup = document.getElementById("ethnicSelect").value;
     if (selectedGroup && ethnicGroups[selectedGroup]) {
@@ -32,7 +86,7 @@ function openEthnicGroupWebsite() {
     }
 }
 
-// Dictionary Function (Uses Google, Wikipedia, DictionaryAPI.dev)
+// Fetch dictionary definition from Wikipedia
 async function searchDictionary() {
     let word = document.getElementById("searchWord").value.trim();
     let resultElement = document.getElementById("dictionaryResult");
@@ -42,44 +96,23 @@ async function searchDictionary() {
         return;
     }
 
-    // 1. Google Search (Oxford Dictionary)
-    let googleSearchUrl = `https://www.google.com/search?q=define+${encodeURIComponent(word)}`;
-    resultElement.innerHTML = `Click <a href="${googleSearchUrl}" target="_blank">here</a> for the definition on Google.`;
-
-    // 2. Wikipedia
     const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(word)}`;
+
     try {
         let response = await fetch(wikiUrl);
         let data = await response.json();
 
-        if (data.extract) {
-            resultElement.innerHTML += `<br><strong>Wikipedia:</strong> ${data.extract}`;
-            return;
+        if (data.type === "disambiguation" || !data.extract) {
+            resultElement.textContent = "No clear definition found. Try another word.";
+        } else {
+            resultElement.textContent = data.extract;
         }
     } catch (error) {
-        console.warn("Wikipedia fetch failed:", error);
+        resultElement.textContent = "Error fetching definition. Try again.";
     }
-
-    // 3. DictionaryAPI.dev (No API Key Required)
-    const dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`;
-    try {
-        let response = await fetch(dictionaryUrl);
-        let data = await response.json();
-
-        if (response.ok && data.length > 0) {
-            let meaning = data[0].meanings[0].definitions[0].definition;
-            resultElement.innerHTML += `<br><strong>Dictionary API:</strong> ${meaning}`;
-            return;
-        }
-    } catch (error) {
-        console.warn("DictionaryAPI.dev fetch failed:", error);
-    }
-
-    // If all fail
-    resultElement.innerHTML += "<br>No definition found. Try another word.";
 }
 
-// Change Background from File Input
+// Change background from file input
 function changeBackgroundFromFile() {
     const fileInput = document.getElementById('backgroundInput');
     const file = fileInput.files[0];
@@ -92,7 +125,6 @@ function changeBackgroundFromFile() {
     }
 }
 
-// Set a Default Background
+// Set a default background image
 function setDefaultBackground() {
-    document.body.style.backgroundImage = "url('https://example.com/default-background.jpg')"; // Replace with a real image URL
-        }
+    document.body.style.backgroundImage = "url('https
