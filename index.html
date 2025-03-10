@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Ethnic Groups Section -->
     <div class="container">
         <h1>Ethiopian Ethnic Groups</h1>
         <select id="ethnicSelect" onchange="openEthnicGroupWebsite()">
             <option value="">Select an ethnic group</option>
         </select>
-
+        
         <!-- Background Selection -->
         <input type="file" id="backgroundInput" accept="image/*" onchange="changeBackgroundFromFile()" />
         <button onclick="setDefaultBackground()">Set Default Background</button>
     </div>
 
+    <!-- Dictionary Section -->
     <div class="dictionary">
         <h2>Dictionary</h2>
         <input type="text" id="searchWord" placeholder="Enter a word">
